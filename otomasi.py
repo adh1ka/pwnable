@@ -7,7 +7,7 @@ ip_start = 60
 ip_end = 84
 
 # Authorization token for flag submission
-auth_token = "eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTcyNDI4OTc5NiwianRpIjoiNjg1MjA0ZWMtNDEwYi00YjZlLThlZWMtNDMzYjBjNWJmY2RjIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6eyJ0ZWFtIjp7ImlkIjozNSwibmFtZSI6IkQuSS4gWW9neWFrYXJ0YSJ9fSwibmJmIjoxNzI0Mjg5Nzk2LCJjc3JmIjoiMjE3NTE3ODQtMmM1Zi00OWM3LTkyOGUtNjAwODYzM2Q4NGI3IiwiZXhwIjoxNzI0MzMyOTk2fQ.by66e7Pkas0oGS7pqlabXa4XS2JqXDARwsFllcyeetnG4nlyMbFWI3KpIPUofuynS9E0Qovf2Q50xpCRNBlT_g"
+auth_token = ""
 
 # Define the URL for flag submission
 submission_url = "https://and-be.idcyberskills.com/api/v2/submit"
